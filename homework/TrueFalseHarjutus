@@ -1,0 +1,12 @@
+function thanos_b(str){
+    let leitud = {a:0, b:2, c:"0"}
+    for(let i= 0; i < str.length; i++ )
+                            //leitud[i]++
+    if (!leitud[str[i]]){       //hasOwnProperty obj. peab kuidagi lisama juurde ja siis protsessima 
+        leitud[str[i]] = 1      // "!" - eitus                       
+        
+    } else
+        leitud[str[i]]++
+    
+    console.log(leitud)
+}
