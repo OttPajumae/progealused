@@ -1,0 +1,32 @@
+PÄEV6!!!!!!!!!
+Harjutus1
+let arrayarvud = [2,7,6,12,44,32,4,8,12,17]
+let sum = 0 
+let i = 0
+while (i < arrayarvud.length){
+    sum = sum + arrayarvud[i]
+    i++
+    
+}
+console.log(sum)
+
+Harjutus2
+//Võta string "2 7 6 12 44 32 4 8 12 17" ja leidke seal olevate arvude kogusumma, iga arv on eraldatud tühikuga
+
+let str = ("2 7 6 12 44 32 4 8 12 17")
+let strArvud = str.split(" ")
+let i= 0
+let sum = 0 
+while (i < strArvud.length){
+    sum = sum  + parseInt(strArvud[i])
+    i++
+
+}
+
+console.log(sum)
+
+//Kirjuta funktsioon mis teisendab sekundid tundideks näiteks 7582 on 2 tundi.
+function howManyHours(second) { 
+let Hour = (second/60)/60
+    return Hour
+}
