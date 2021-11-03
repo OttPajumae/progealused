@@ -1,0 +1,32 @@
+let rect = [4, 7]
+let answer = ""                         //Üks awnser oli top ja bottomi jaoks ja teine oli keskmise osa jaoks
+let answer2 = ""
+let control = new Boolean(true);        //Boolean on true v false statment 
+let controlCheck = new Boolean(true);
+for (i = 0; i < rect[1]; i++ ){         //i = 0, niikaua kui i on väiksem kui rect kõrgus siis liida i'le juurde (i++)
+    
+    if (i == 0 && controlCheck == true) { //Top and bottom
+        for(j = 0; j < rect[0]; j++){
+            answer2 = answer2 + "*"
+        }
+    } 
+    else if (control == true ) {           //Center 
+        for(j = 0;j < rect[0]; j++ ){
+            if (j == 0 || j == rect[0]-1){ //Kui j = 0 või j = selle laiusega - 1  
+            answer = answer + "*"          // Teeb küljed
+            }
+        else
+        {answer = answer + " "}            //ja kui * = kas 2 v 3, siis tuleb tühik (" ")
+
+        }
+    }
+    
+ if (i == rect[1]-1 || i == 0){   //Outputs Top and bottom, changes control to false  
+    controlCheck = false 
+    console.log(answer2)
+    
+ }
+    else{                         //Outputs Center, changes control to false
+        control = false   
+        console.log(answer)}
+}
