@@ -1,0 +1,13 @@
+let rect = [5, 7]
+let answer = ""
+var control = new Boolean(true); //True v False statment 
+for (i = 0; i < rect[1]; i++ ){  //i = 0, niikaua kui i on väiksem kõrgusest, siis liida i'le juurde (i++)
+    if (control == true){
+        for(j = 0; j < rect[0]; j++){
+            answer = answer + "*"
+        }
+        
+    }
+    control = false
+    console.log(answer)
+}
