@@ -1,0 +1,17 @@
+const fs = require('fs')
+
+const content = 'Some content!'
+
+fs.writeFile('C:/Users/opilane/Desktop/test', content, err => { // ESCAPE SÜMBOL "\", "=>" on teine viis kuidas funktsiooni kirjutada
+  if (err) {    //Callback on alati funktsioon on ka nimi CALLBACK "() => {}"
+    console.error(err) //Käivitub ainult siis kui faili tegemisel on mingi error, siis kirjutab selle välja 
+    return
+  }
+  //file written successfully
+})
+
+
+fs.readFile('C:/Users/opilane/Desktop/test', 'UTF-8', (err,data) => {
+    if(err) throw err;
+    console.log("Minu fail "+data); // \n on uus rida
+})
