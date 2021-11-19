@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input class= "tekst" onkeyup="LisaKanne(event)"> 
+    <button onclick= "LisaKanne(event)">APPIvol2</button>
+    <input type = "checkbox"></input>
+
+    <ul id = "list">
+        
+    </ul>
+
+    <script>
+        function lisaRida(name, done=false){
+            console.log(name)
+            let li = document.createElement("li");
+            li.textContent = name;
+
+            let checkbox = document.createElement("input"); 
+            checkbox.type = "checkbox"
+            checkbox.checked = done
+            checkbox.onclick = e => e.preventDefault()
+            li.appendChild(checkbox)
+            
+            li.onclick = function() {
+                checkbox.checked = !checkbox.checked
+                if (!checkbox.checked)
+                    li.style.textDecoration = "none"
+                else
+                    li.style.textDecoration = "line-through"
+            }
+            if (!checkbox.checked)
+                li.style.textDecoration = "none"
+            else
+                li.style.textDecoration = "line-through"
+            
+            //let element = document.getElementById("list");
+            //element.appendChild(li);
+            
+
+            
+            let del = document.createElement("button");
+            del.textContent= "Kustuta"
+            del.onclick = function() {
+                li.remove();
+            }
+
+            li.appendChild(del);
+            let element = document.getElementById("list");
+            element.appendChild(li);
+        }
+
+        function LisaKanne() {
+            console.log(event)
+            if (/*event.hasOwnProperty('key')*/ 'key' in event  && event.key != "Enter")
+                return;
+            //console.log(document.body.children[0].value) //value toob valja selle mis on inputi sisse kirjutatud
+            //li.onclick = 
+            
+            lisaRida(document.body.children[0].value)
+            
+            //element.innerHTML += "<li>" + uusTekst + "</li>" "li" - list item
+            //adn.value = adn.value.split("").reverse().join("") //split- võttab sõna ja teeb selle eraldi tähtedeks 
+            //document.body.children[0].value = "123"
+        }
+        fetch('http://demo2.z-bit.ee/todo.json')
+            .then(response => {
+                if (!response.ok) {
+            throw new Error("HTTP error " + response.status); // Miks see siin on? "Kui response ei ole õige, viska ette error?"
+                }
+            return response.json();
+        })
+            .then(tasks => { // Sama hea kui "function tasks()"
+                for(i = 0; i < tasks.length; i++){ //(let task of tasks) = (i = 0; i < tasks.length; i++)
+                lisaRida(tasks[i].title, tasks[i].markedAsDone) // teise meetotiga ei ole vaja [i] panna
+                    console.log(tasks[i])
+                }
+            
+           // task.forEach(lisaKanne) töötaks ka LMAO
+            })
+        /*function vajutasinNuppu() {
+            //document.getElementbyClassName("tekst")[0]
+            console.log(document.getElementsByClassName("tekst"))
+        }*/
+    </script>
+</body>
+</html>
